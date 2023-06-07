@@ -1,18 +1,26 @@
-name: Docker Image CI
+# Use an official Python runtime as the base image
+FROM python:3.7
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# Set the working directory in the container
+WORKDIR /LMS
 
-jobs:
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-  build:
+# Install the Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-    runs-on: ubuntu-latest
+# Copy the Django project code into the container
+COPY . .
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+# Set environment variables, if necessary
+# ENV DJANGO_SETTINGS_MODULE=myproject.settings.prod
+
+# Run any necessary Django management commands
+# RUN python manage.py collectstatic --noinput
+
+# Expose the application's port (change it if necessary)
+EXPOSE 8000
+
+# Define the command to run your application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
