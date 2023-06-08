@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build -f ../../Dockerfile -t abi --no-cache
+      run: docker build -t abi -f ../../Dockerfile --no-cache
