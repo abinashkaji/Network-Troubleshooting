@@ -11,12 +11,3 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-<<<<<<< HEAD
-      run: docker build . --file Dockerfile
-=======
-      run: docker build -t abi -f ../../Dockerfile --no-cache
->>>>>>> 6df15819ca0402815ffce7bb14ebb8756e83c379
