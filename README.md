@@ -1,18 +1,18 @@
-# Data Learn Courses
+# Data Engineering Learning  Courses
 
 Welcome to Data Learn Courses! Here, we offer a range of courses to equip you with essential skills and knowledge in the fields of Analytics, Data Science, and SQL. Our courses are designed to cater to different experience levels, from beginners to advanced learners. Let's take a closer look at what we have to offer:
 
 ## Getting Started with Analytics (Data) Engineering
 
-In this course, I, as a seasoned data engineer with over 10 years of experience in creating analytical solutions in various countries, will guide you through the fundamentals of Analytics Engineering. We will cover Business Intelligence tools, databases, ETL tools, cloud computing, and more. Whether you are completely new to the field of data or have some experience, this course is designed to benefit everyone.
+In this course, I, as a data engineer practitioner, will guide you through the fundamentals of Analytics Engineering. We will cover databases, ETL tools, cloud computing, and more. if you are completely new to the field of data or have some experience, this course is designed to benefit everyone.
 
-The initial modules will focus on the basics of analytics and classic tasks such as Business Intelligence, reporting, visualization, data warehousing, SQL, and Excel. This knowledge will be sufficient for roles like BI Developer, Analyst, and more. As we progress to module 5-6, we will dive into the work of a Data Engineer, building upon the foundational knowledge.
+The initial modules will focus on the basics of analytics and classic tasks such as  visualization, reporting,data warehousing, SQL, and Excel. This knowledge will be is a must. later, the work of a Data Engineer, building upon the foundational knowledge are covered.
 
-## Getting Started with Machine Learning and Data Science (ML-101)
+## Getting Started with Machine Learning and Data Science 
 
-Led by Anastasia Rizzo, this course offers a comprehensive exploration of the theory of Machine Learning and Data Science, accompanied by practical real-life cases. The course is divided into three modules. Module 1 covers the theory of machine learning and data science, Module 2 delves into Regression (theory and practice), and Module 3 explores Classification with two practical cases. Whether you are a bit hesitant but keen on starting your journey into this exciting field, this course is perfect for you.
+Get a comprehensive exploration of the theory of Machine Learning and Data Science, accompanied by practical real-life cases. Theory of machine learning and data science, Regression (theory and practice), and then explores Classification with practical cases.
 
-## SQL for Beginners (SQL-101)
+## SQL for Beginners
 
 Taught by Anatoly Balakirev, this course introduces you to working with databases using the Structured Query Language (SQL). The course comprises three modules, each containing ten video lessons. Ideal for those with no prior experience in database work, the course progresses from simple to complex concepts. Each lesson is accompanied by examples and files to facilitate learning.
 
