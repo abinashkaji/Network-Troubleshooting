@@ -88,6 +88,8 @@ def detect_slowloris_attack(packet, slowloris_counter):
 
 def main():
     file_path = get_user_input()
+    print("enter destination Host ip then source ip")
+    source_ip,destination_ip=get_ip(),get_ip()
     suspicious_keywords = ["password", "login", "admin", "root", "bank", "credit", "card", "paypal", "malware", "virus", "trojan"]
 
     capture = pyshark.FileCapture(file_path, keep_packets=False)
