@@ -1,68 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-import os
-import sys
-import time
-from collections import defaultdict, Counter
-
 import pyshark
 from scapy.all import *
-
-# Color print functions
-def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
-def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
-def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
-def prLightPurple(skk): print("\033[94m {}\033[00m" .format(skk))
-def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
-def prCyan(skk): print("\033[96m {}\033[00m" .format(skk))
-def prLightGray(skk): print("\033[97m {}\033[00m" .format(skk))
-def prBlack(skk): print("\033[98m {}\033[00m" .format(skk))
-
-prCyan('''
-                                _                 ___  
-                               | |               / _ \ 
-  _ __ ___     ___  __      __ | |_  __      __ | | | -|
- | '_ ` _ \   / _ \ \ \ /\ / / | __| \ \ /\ / / | | |----|
- | | | | | | |  __/  \ V  V /  | |_   \ V  V /  | |_| --|
- |_| |_| |_|  \___|   \_/\_/    \__|   \_/\_/    \___/ 
-                                                       
-                                                                                                                         
-
-         _                 
-        //\lperen  |U|gurlu
-                   `-'     
-
-                      
-''' )
-
-prRed('''''''''''''''
-
-        Network Compromise Assessment
-         *    *      * * *  *   *  
-        * *    ******          * * 
-           **         *   ** **   *
-                         *         
-                      *   ** **    
-        *     *                   *
-           *    *   *          *   
-          *            *    *   ** 
-               *   *               
-            *    *                 
-                                   
-         *        *  *             
-
-
-''''''''''''''')
+from collections import defaultdict, Counter
 
 def get_user_input():
     file_path = input("Please enter the path to the .pcap or .pcapng file: ")
     return file_path
-
-prGreen('''            Scanning In Progress......
-''')
-
-time.sleep(4.0)
 
 def get_all_ip_addresses(capture):
     ip_addresses = set()
@@ -71,6 +15,20 @@ def get_all_ip_addresses(capture):
             ip_addresses.add(packet['IP'].src)
             ip_addresses.add(packet['IP'].dst)
     return ip_addresses
+
+def ospf_troubleshoot(capture):
+  '''to become ospf running smoot, we need to check configuration of '''
+  return
+
+def bgp_troubleshoot(capture):
+    '''to become bgp running smoot, we need to check '''
+  return
+
+def _troubleshoot(capture):
+    '''to become bgp running smoot, we need to check '''
+  return
+
+
 
 def detect_dns_tunneling(packet):
     if hasattr(packet, 'DNS') and packet.DNS.qr == 0:
