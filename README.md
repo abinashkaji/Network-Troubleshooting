@@ -1,32 +1,50 @@
-# Data Engineering Learning  Courses
+# Automatic Network Troubleshooting with Wireshark packet
 
-Welcome to Data Learn Courses! Here, we offer a range of courses to equip you with essential skills and knowledge in the fields of Analytics, Data Science, and SQL. Our courses are designed to cater to different experience levels, from beginners to advanced learners. Let's take a closer look at what we have to offer:
+##Project Overview
+This Python project aims to provide a comprehensive solution for network traffic analysis and troubleshooting by focusing on ping operations between hosts. The tool is designed to analyze and monitor network connectivity, identify potential issues, and facilitate troubleshooting activities.
 
-## Getting Started with Analytics (Data) Engineering
+##Features
+Ping Analysis:
 
-In this course, I, as a data engineer practitioner, will guide you through the fundamentals of Analytics Engineering. We will cover databases, ETL tools, cloud computing, and more. if you are completely new to the field of data or have some experience, this course is designed to benefit everyone.
+##Perform ping operations from one host to another.
+Collect and analyze network latency, packet loss, and round-trip time (RTT) data.
+Real-time Monitoring:
 
-The initial modules will focus on the basics of analytics and classic tasks such as  visualization, reporting,data warehousing, SQL, and Excel. This knowledge will be is a must. later, the work of a Data Engineer, building upon the foundational knowledge are covered.
+##Continuously monitor network connectivity in real-time.
+Display live statistics, such as response times and packet loss percentages.
+Troubleshooting Assistance:
 
-## Getting Started with Machine Learning and Data Science 
+##Identify potential network issues based on ping results.
+Provide diagnostic information to aid in troubleshooting.
+User-Friendly Interface:
 
-Get a comprehensive exploration of the theory of Machine Learning and Data Science, accompanied by practical real-life cases. Theory of machine learning and data science, Regression (theory and practice), and then explores Classification with practical cases.
+##Intuitive command-line interface for ease of use.
+Clear and concise output to assist users in interpreting results.
 
-## SQL for Beginners
+##Customization:
+Adjustable parameters for ping operations, allowing users to tailor tests to specific requirements.
+Configurable alerting for abnormal network behavior.
 
-Taught by Anatoly Balakirev, this course introduces you to working with databases using the Structured Query Language (SQL). The course comprises three modules, each containing ten video lessons. Ideal for those with no prior experience in database work, the course progresses from simple to complex concepts. Each lesson is accompanied by examples and files to facilitate learning.
+###Requirements
+Python 3.x
+External dependencies (specified in requirements.txt)
+Installation
+Clone the repository:
 
-Note: The SQL course perfectly complements Module 2 of the Engineering and Analytics course.
+git clone https://github.com/yourusername/network-analysis-tool.git
+Navigate to the project directory:
 
-## Analytical Community for Women
+cd network-analysis-tool
+Install dependencies:
 
-At Data Learn, we recognize the need for a supportive community for women interested in analytics and technology. We aim to create a space where women can comfortably learn and grow at their own pace. We encourage interested individuals to join us in developing this community, and we are committed to assisting with content creation and organizing webinars with international speakers. This community can also serve as a valuable resource for finding job opportunities and potential employees.
+pip install -r requirements.txt
+Usage
+Execute the main script:
 
-## How to Get Started with Data Learn Courses
+python network_analysis.py
+Follow on-screen instructions to perform ping operations and analyze network traffic.
 
-1. Register on the Data Learn website and optionally fill out the questionnaire to let us know more about you and your goals.
-2. Join the Data Learn Telegram channel, where you can find convenient navigation through the available modules (Data Engineering and BI).
-3. Take the survey if you haven't already, as it helps us understand your needs and interests better.
-4. Begin your learning journey with the "Getting Started - Introduction to Analytics and Data Engineering (DE-101)" course, which contains informative video lectures and links to relevant textbook chapters.
+Configuration
+Adjust parameters such as ping interval, timeout, and other settings in the config.ini file.
 
-Thank you for choosing Data Learn Courses. We are excited to accompany you on your learning path and support your growth in the world of data analytics and engineering. Let's learn and excel together!
+##Thank you for visiting. Let's learn and excel together!
