@@ -5,22 +5,22 @@ This Python project aims to provide a comprehensive solution for network traffic
 
 ## Features
 
-## Perform ping operations from one host to another.
+### Perform ping operations from one host to another.
 Collect and analyze network latency, packet loss, and round-trip time (RTT) data.
 Real-time Monitoring:
 
-## Continuously monitor network connectivity in real-time.
+### Continuously monitor network connectivity in real-time.
 Display live statistics, such as response times and packet loss percentages.
 Troubleshooting Assistance:
 
-## Identify potential network issues based on ping results.
+### Identify potential network issues based on ping results.
 Provide diagnostic information to aid in troubleshooting.
 User-Friendly Interface:
 
-## Intuitive command-line interface for ease of use.
+### Intuitive command-line interface for ease of use.
 Clear and concise output to assist users in interpreting results.
 
-## Customization:
+### Customization:
 Adjustable parameters for ping operations, allowing users to tailor tests to specific requirements.
 Configurable alerting for abnormal network behavior.
 
@@ -30,7 +30,7 @@ External dependencies (specified in requirements.txt)
 Installation
 Clone the repository:
 
-git clone https://github.com/yourusername/network-analysis-tool.git
+git clone from: https://github.com/abinashkaji/Automate-Network-troubleshooting-with-Wireshark.git
 Navigate to the project directory:
 
 cd network-analysis-tool
