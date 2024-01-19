@@ -8,6 +8,11 @@ def get_user_input():
     file_path = input("Please enter the path to the .pcap or .pcapng file: ")
     return file_path
 
+def get_ip():
+    ip=input()
+    'parse and make ip formating compatible to other and suitable to save as a variable'
+    return ip
+
 def get_all_ip_addresses(capture):
     ip_addresses = set()
     for packet in capture:
