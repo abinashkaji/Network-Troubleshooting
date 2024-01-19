@@ -4,7 +4,6 @@
 This Python project aims to provide a comprehensive solution for network traffic analysis and troubleshooting by focusing on ping operations between hosts. The tool is designed to analyze and monitor network connectivity, identify potential issues, and facilitate troubleshooting activities.
 
 ## Features
-Ping Analysis:
 
 ## Perform ping operations from one host to another.
 Collect and analyze network latency, packet loss, and round-trip time (RTT) data.
