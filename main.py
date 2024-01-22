@@ -57,27 +57,29 @@ def read_files_from_directory():
         except Exception as e:
                 print(f"Error processing file: {file_path}, Error: {str(e)}")
                 traceback.print_exc()                    
-
-  		return capture 
+                return None 
     else:
         print('invalid file or path')
         return None
 
 
 def ospf_troubleshoot(capture):
-  '''to become ospf running smoot, we need to check configuration of '''
-  return
+  # '''to become ospf running smoot, we need to check configuration of '''
+  pass 
+  # return
 
 def bgp_troubleshoot(capture):
-    '''to become bgp running smoot, we need to check '''
-  return
+    # '''to become bgp running smoot, we need to check '''
+    
+    pass 
+  # return 
 
 def _troubleshoot(capture):
-    '''to become bgp running smoot, we need to check '''
-  return
+    # to become bgp running smoot, we need to check 
+  pass # return
 
 
-def main()
+def main():
 # Read data from the selected directory path from the user
     df= read_files_from_directory()
     # pivot table and groupby before visualize the stat
@@ -90,5 +92,5 @@ def main()
     output_directory = os.path.join(file_path, "PCAP_Output")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     main()
