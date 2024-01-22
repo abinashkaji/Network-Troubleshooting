@@ -81,6 +81,9 @@ def main()
 # Read data from the selected directory path from the user
     df= read_files_from_directory()
     # pivot table and groupby before visualize the stat
+    #get source ip and destination ip from user
+    src_ip=input("Enter source ip/ ip range")
+    dst_ip=input("Enter destination ip/ ip range")
     #get parameter at src ip and dst_ip end 
 
 # Set the output directory for CSV files
