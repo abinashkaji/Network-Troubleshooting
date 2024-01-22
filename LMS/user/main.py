@@ -4,22 +4,63 @@ import pyshark
 from scapy.all import *
 from collections import defaultdict, Counter
 
-def get_user_input():
-    file_path = input("Please enter the path to the .pcap or .pcapng file: ")
-    return file_path
+def pcap_to_dataframe(pcap_file):
+    packets = rdpcap(pcap_file)  # Read the PCAP file
+    # Extract relevant information from each packet
+    data = []
+    for packet in packets:
+        if IP in packet:
+            row = {
+                'Source IP': packet[IP].src,
+                'Destination IP': packet[IP].dst,
+                'Protocol': packet[IP].proto,
+                'Length': len(packet),
+                'Time': packet.time # others field required from protocol
+            }
+            data.append(row)
 
-def get_ip():
-    ip=input()
-    'parse and make ip formating compatible to other and suitable to save as a variable'
-    return ip
+    # Convert the extracted data to a DataFrame
+    df = pd.DataFrame(data)
+    return df
 
-def get_all_ip_addresses(capture):
-    ip_addresses = set()
-    for packet in capture:
-        if hasattr(packet, 'IP'):
-            ip_addresses.add(packet['IP'].src)
-            ip_addresses.add(packet['IP'].dst)
-    return ip_addresses
+
+def read_files_from_directory():
+    root = Tk()
+    root.withdraw()  # Hide the main window
+
+    file_path = filedialog.askdirectory(title="Select file")
+
+    if os.path.isfile(file_path) and (file_path.endswith(".pcap") or file_path.endswith(".pcapng") ) :
+        try:
+            capture = pcap_to_dataframe(file_path)
+            # for packet in capture:            
+            
+                # if "IP" in packet:
+                    # packet_number = packet.frame_info.number
+                    # base_row = extract_base4(packet)
+                # dst_ip=packet.ip.dst 
+                # src_ip=packet.ip.src 
+                # packet.
+
+                # if hasattr(packet, 'eth'):
+                    # eth_row = extract_eth(packet)
+                # if hasattr(packet, 'vlan'):
+                    # vlan_row = extract_vlan(packet)
+                # if hasattr(packet, 'tcp'):
+                    # tcp_row = extract_tcp(packet)
+                # if hasattr(packet, 'udp'):
+                            # field_names = packet.dns._all_fields
+                            # print(field_names)
+                    # udp_row = extract_udp(packet)       
+        except Exception as e:
+                print(f"Error processing file: {file_path}, Error: {str(e)}")
+                traceback.print_exc()                    
+
+  		return capture 
+    else:
+        print('invalid file or path')
+        return None
+
 
 def ospf_troubleshoot(capture):
   '''to become ospf running smoot, we need to check configuration of '''
@@ -34,95 +75,13 @@ def _troubleshoot(capture):
   return
 
 
+def main()
+# Read data from the selected directory path from the user
+    df= read_files_from_directory()
 
-def detect_dns_tunneling(packet):
-    if hasattr(packet, 'DNS') and packet.DNS.qr == 0:
-        for i in range(packet[DNS].ancount):
-            if packet[DNS].an[i].type == 16 and len(packet[DNS].an[i].rdata) > 100:
-                print(f"[+] Suspicious activity detected: DNS Tunneling")
-                print(packet)
+# Set the output directory for CSV files
+    output_directory = os.path.join(file_path, "PCAP_Output")
 
-def detect_ssh_tunneling(packet):
-    if hasattr(packet, 'SSH') and hasattr(packet, 'TCP') and (packet['TCP'].sport > 1024 or packet['TCP'].dport > 1024):
-        print(f"[+] Suspicious activity detected: SSH Tunneling")
-        print(packet)
-
-def detect_tcp_session_hijacking(packet):
-    if hasattr(packet, 'TCP') and packet['TCP'].flags == 'FA' and int(packet['TCP'].seq) > 0 and int(packet['TCP'].ack) > 0:
-        print(f"[+] Suspicious activity detected: TCP Session Hijacking")
-        print(packet)
-
-def detect_smb_attack(packet):
-    if hasattr(packet, 'SMB2') and packet['SMB2'].command == 5:
-        print(f"[+] Suspicious activity detected: SMB Attack")
-        print(packet)
-
-def detect_smtp_dns_attack(packet):
-    if (hasattr(packet, 'SMTP') and packet['SMTP'].command == 'HELO') or (hasattr(packet, 'DNS') and packet['DNS'].opcode == 2):
-        print(f"[+] Suspicious activity detected: SMTP or DNS Attack")
-        print(packet)
-
-def detect_ipv6_fragmentation_attack(packet):
-    if hasattr(packet, 'IPv6') and hasattr(packet, 'IPv6ExtHdrFragment') and int(packet['IPv6ExtHdrFragment'].plen) > 1500:
-        print(f"[+] Suspicious activity detected: IPv6 Fragmentation Attack")
-        print(packet)
-
-def detect_tcp_rst_attack(packet):
-    if hasattr(packet, 'TCP') and packet['TCP'].flags == 'R' and int(packet['TCP'].window) == 0:
-        print(f"[+] Suspicious activity detected: TCP RST Attack")
-        print(packet)
-
-def detect_syn_flood_attack(packet, syn_counter):
-    if hasattr(packet, 'TCP') and packet['TCP'].flags == 'S' and int(packet['TCP'].window) > 0:
-        syn_counter[packet['IP'].src] += 1
-        if syn_counter[packet['IP'].src] > 100:  # Adjust the threshold as needed
-            print(f"[+] Suspicious activity detected: SYN Flood Attack")
-            print(packet)
-
-def detect_udp_flood_attack(packet):
-    if hasattr(packet, 'UDP') and int(packet['UDP'].len) > 1024:
-        print(f"[+] Suspicious activity detected: UDP Flood Attack")
-        print(packet)
-
-def detect_slowloris_attack(packet, slowloris_counter):
-    if hasattr(packet, 'TCP') and packet['TCP'].flags == 'PA' and int(packet['TCP'].window) > 0 and int(packet['TCP'].len) < 10:
-        slowloris_counter[packet['IP'].src] += 1
-        if slowloris_counter[packet['IP'].src] > 100:  # Adjust the threshold as needed
-            print(f"[+] Suspicious activity detected: Slowloris Attack")
-            print(packet)
-
-def main():
-    file_path = get_user_input()
-    print("enter destination Host ip then source ip")
-    source_ip,destination_ip=get_ip(),get_ip()
-    suspicious_keywords = ["password", "login", "admin", "root", "bank", "credit", "card", "paypal", "malware", "virus", "trojan"]
-
-    capture = pyshark.FileCapture(file_path, keep_packets=False)
-    ip_addresses = get_all_ip_addresses(capture)
-
-    syn_counter = defaultdict(int)
-    slowloris_counter = defaultdict(int)
-
-    for source_ip in ip_addresses:
-        print(f"\n[+] Checking for IP address {source_ip}")
-        capture.reset()
-        for packet in capture:
-            if hasattr(packet, 'IP') and packet['IP'].src == source_ip:
-                detect_dns_tunneling(packet)
-                detect_ssh_tunneling(packet)
-                detect_tcp_session_hijacking(packet)
-                detect_smb_attack(packet)
-                detect_smtp_dns_attack(packet)
-                detect_ipv6_fragmentation_attack(packet)
-                detect_tcp_rst_attack(packet)
-                detect_syn_flood_attack(packet, syn_counter)
-                detect_udp_flood_attack(packet)
-                detect_slowloris_attack(packet, slowloris_counter)
-                for keyword in suspicious_keywords:
-                    if keyword in str(packet):
-                        print(f"[+] Suspicious keyword detected: {keyword}")
-                        print(packet)
-                        break
 
 if __name__ == "__main__":
     main()
