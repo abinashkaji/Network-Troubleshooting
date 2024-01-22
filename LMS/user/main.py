@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import pyshark
+import os
+from tkinter import Tk, filedialog
 from scapy.all import *
 from collections import defaultdict, Counter
 
@@ -78,6 +80,8 @@ def _troubleshoot(capture):
 def main()
 # Read data from the selected directory path from the user
     df= read_files_from_directory()
+    # pivot table and groupby before visualize the stat
+    #get parameter at src ip and dst_ip end 
 
 # Set the output directory for CSV files
     output_directory = os.path.join(file_path, "PCAP_Output")
